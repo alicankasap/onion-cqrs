@@ -1,3 +1,4 @@
+using CQRS.Persistence;
 
 namespace CQRS.API
 {
@@ -20,6 +21,8 @@ namespace CQRS.API
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+
+            builder.Services.AddPersistence(builder.Configuration);
 
             var app = builder.Build();
 
