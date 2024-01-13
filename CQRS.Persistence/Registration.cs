@@ -1,4 +1,6 @@
-﻿using CQRS.Persistence.Context;
+﻿using CQRS.Application.Interfaces.Repositories;
+using CQRS.Persistence.Context;
+using CQRS.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +13,8 @@ namespace CQRS.Persistence
         {
             services.AddDbContext<AppDbContext>(opt =>
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
         }
     }
 }
