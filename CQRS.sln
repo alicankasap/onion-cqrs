@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4133F6F6-4B45-4CCF-A44C-7A821E0083CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Application", "CQRS.Application\CQRS.Application.csproj", "{21CD9210-57D4-4AA2-8D26-C7578DB1BFB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Application", "CQRS.Application\CQRS.Application.csproj", "{21CD9210-57D4-4AA2-8D26-C7578DB1BFB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Domain", "CQRS.Domain\CQRS.Domain.csproj", "{E27A86C1-834B-454A-AB17-D3C314C53747}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Domain", "CQRS.Domain\CQRS.Domain.csproj", "{E27A86C1-834B-454A-AB17-D3C314C53747}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Infactructure", "CQRS.Infactructure\CQRS.Infactructure.csproj", "{59B73BC7-7FBB-4ED9-91EC-CDE03EC46521}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Infactructure", "CQRS.Infactructure\CQRS.Infactructure.csproj", "{59B73BC7-7FBB-4ED9-91EC-CDE03EC46521}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.Persistence", "CQRS.Persistence\CQRS.Persistence.csproj", "{5098AD89-23DD-45C4-8640-0DF85D0CCCEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.Persistence", "CQRS.Persistence\CQRS.Persistence.csproj", "{5098AD89-23DD-45C4-8640-0DF85D0CCCEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CQRS.API", "CQRS.API\CQRS.API.csproj", "{F4BE8525-2B97-40C1-959F-7579B5CE61FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CQRS.API", "CQRS.API\CQRS.API.csproj", "{F4BE8525-2B97-40C1-959F-7579B5CE61FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

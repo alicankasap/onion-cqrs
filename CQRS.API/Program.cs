@@ -1,4 +1,5 @@
 using CQRS.Persistence;
+using Microsoft.OpenApi.Models;
 
 namespace CQRS.API
 {
@@ -8,12 +9,17 @@ namespace CQRS.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddControllers();
+
             // Add services to the container.
-            builder.Services.AddAuthorization();
+            //builder.Services.AddAuthorization();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             var env = builder.Environment;
 
@@ -23,6 +29,11 @@ namespace CQRS.API
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             builder.Services.AddPersistence(builder.Configuration);
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CQRS API", Version = "v1", Description = "CQRS API swagger client." });
+            });
 
             var app = builder.Build();
 
@@ -34,8 +45,7 @@ namespace CQRS.API
             }
 
             app.UseAuthorization();
-
-            
+            app.MapControllers();
 
             app.Run();
         }
