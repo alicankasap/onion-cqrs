@@ -1,7 +1,7 @@
 ﻿using CQRS.Application.Interfaces.Repositories;
 using CQRS.Domain.Common;
 
-namespace CQRS.Application.UnitOfWorks
+namespace CQRS.Application.Interfaces.UnitOfWorks
 {
     public interface IUnitOfWork : IAsyncDisposable
     {

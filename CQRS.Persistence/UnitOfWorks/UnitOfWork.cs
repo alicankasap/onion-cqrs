@@ -1,5 +1,5 @@
 ﻿using CQRS.Application.Interfaces.Repositories;
-using CQRS.Application.UnitOfWorks;
+using CQRS.Application.Interfaces.UnitOfWorks;
 using CQRS.Persistence.Context;
 using CQRS.Persistence.Repositories;
 

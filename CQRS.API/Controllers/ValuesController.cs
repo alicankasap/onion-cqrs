@@ -1,4 +1,4 @@
-﻿using CQRS.Application.UnitOfWorks;
+﻿using CQRS.Application.Interfaces.UnitOfWorks;
 using CQRS.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,5 +1,7 @@
 using CQRS.Persistence;
 using Microsoft.OpenApi.Models;
+using CQRS.Application;
+using CQRS.Mapper;
 
 namespace CQRS.API
 {
@@ -29,6 +31,8 @@ namespace CQRS.API
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             builder.Services.AddPersistence(builder.Configuration);
+            builder.Services.AddApplication();
+            builder.Services.AddCustomMapper();
 
             builder.Services.AddSwaggerGen(c =>
             {
