@@ -22,13 +22,13 @@ namespace CQRS.Application.Features.Products.Queries.GetAllProducts
         {
             var products = await unitOfWork.GetReadRepository<Product>().GetAllAsync(include: x => x.Include(b => b.Brand));
 
-            var brandMap = mapper.Map<BrandDto, Brand>(new Brand());
-            var productMap = mapper.Map<GetAllProductsQueryResponse, Product>(products);
+            var mappedBrand = mapper.Map<BrandDto, Brand>(new Brand());
+            var mappedProducts = mapper.Map<GetAllProductsQueryResponse, Product>(products);
 
-            foreach (var item in productMap)
+            foreach (var item in mappedProducts)
                 item.Price -= (item.Price * item.Discount / 100);
 
-            return productMap;
+            return mappedProducts;
         }
     }
 }

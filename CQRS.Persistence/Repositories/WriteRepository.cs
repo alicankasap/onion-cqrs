@@ -35,5 +35,10 @@ namespace CQRS.Persistence.Repositories
         {
             await Task.Run(() => Table.Remove(entity));
         }
+
+        public async Task HardDeleteRangeAsync(IList<T> entities)
+        {
+            await Task.Run(() => Table.RemoveRange(entities));
+        }
     }
 }
