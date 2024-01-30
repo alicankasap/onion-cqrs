@@ -2,6 +2,7 @@ using CQRS.Persistence;
 using Microsoft.OpenApi.Models;
 using CQRS.Application;
 using CQRS.Mapper;
+using CQRS.Application.Exceptions;
 
 namespace CQRS.API
 {
@@ -48,6 +49,7 @@ namespace CQRS.API
                 app.UseSwaggerUI();
             }
 
+            app.ConfigureExceptionHandlingMiddleware();
             app.UseAuthorization();
             app.MapControllers();
 

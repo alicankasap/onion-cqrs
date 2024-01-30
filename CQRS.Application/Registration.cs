@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CQRS.Application.Exceptions;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace CQRS.Application
@@ -8,7 +9,7 @@ namespace CQRS.Application
         public static void AddApplication(this IServiceCollection services)
         {
             var assembly = Assembly.GetExecutingAssembly();
-
+            services.AddTransient<ExceptionMiddleware>();
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
         }
     }
