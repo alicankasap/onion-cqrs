@@ -1,4 +1,5 @@
 using CQRS.Persistence;
+using CQRS.Infactructure;
 using Microsoft.OpenApi.Models;
 using CQRS.Application;
 using CQRS.Mapper;
@@ -32,12 +33,36 @@ namespace CQRS.API
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             builder.Services.AddPersistence(builder.Configuration);
+            builder.Services.AddInfastructure(builder.Configuration);
             builder.Services.AddApplication();
             builder.Services.AddCustomMapper();
 
             builder.Services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CQRS API", Version = "v1", Description = "CQRS API swagger client." });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "'Bearer' yazýp boþluk býraktýktan sonra token'ý giriniz. \r\n\r\n Örneðin \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\""
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
             });
 
             var app = builder.Build();

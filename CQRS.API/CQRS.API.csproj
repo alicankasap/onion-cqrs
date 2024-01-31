@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CQRS.Application\CQRS.Application.csproj" />
+    <ProjectReference Include="..\CQRS.Infactructure\CQRS.Infactructure.csproj" />
     <ProjectReference Include="..\CQRS.Mapper\CQRS.Mapper.csproj" />
     <ProjectReference Include="..\CQRS.Persistence\CQRS.Persistence.csproj" />
   </ItemGroup>

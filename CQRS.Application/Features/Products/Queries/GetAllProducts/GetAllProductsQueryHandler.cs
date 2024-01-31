@@ -28,8 +28,8 @@ namespace CQRS.Application.Features.Products.Queries.GetAllProducts
             foreach (var item in mappedProducts)
                 item.Price -= (item.Price * item.Discount / 100);
 
-            //return mappedProducts;
-            throw new Exception("Hata mesajı");
+            return mappedProducts;
+            //throw new Exception("Hata mesajı");
         }
     }
 }
