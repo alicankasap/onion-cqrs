@@ -1,16 +1,17 @@
-﻿using CQRS.Application.Interfaces.UnitOfWorks;
+﻿using CQRS.Application.Bases;
+using CQRS.Application.Features.Products.Rules;
+using CQRS.Application.Interfaces.AutoMapper;
+using CQRS.Application.Interfaces.UnitOfWorks;
 using CQRS.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace CQRS.Application.Features.Products.Commands.DeleteProduct
 {
-    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommandRequest, Unit>
+    public class DeleteProductCommandHandler : BaseHandler, IRequestHandler<DeleteProductCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-
-        public DeleteProductCommandHandler(IUnitOfWork unitOfWork)
+        public DeleteProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
         }
 
         public async Task<Unit> Handle(DeleteProductCommandRequest request, CancellationToken cancellationToken)

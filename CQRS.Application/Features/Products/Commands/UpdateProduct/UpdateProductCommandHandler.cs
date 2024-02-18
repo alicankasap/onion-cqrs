@@ -1,19 +1,16 @@
-﻿using CQRS.Application.Interfaces.AutoMapper;
+﻿using CQRS.Application.Bases;
+using CQRS.Application.Interfaces.AutoMapper;
 using CQRS.Application.Interfaces.UnitOfWorks;
 using CQRS.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace CQRS.Application.Features.Products.Commands.UpdateProduct
 {
-    public class UpdateProductCommandHandler : IRequestHandler<UpdateProductCommandRequest, Unit>
+    public class UpdateProductCommandHandler : BaseHandler, IRequestHandler<UpdateProductCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
-
-        public UpdateProductCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public UpdateProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
-            this.mapper = mapper;
         }
 
         public async Task<Unit> Handle(UpdateProductCommandRequest request, CancellationToken cancellationToken)

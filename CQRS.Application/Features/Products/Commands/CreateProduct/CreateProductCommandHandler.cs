@@ -1,18 +1,19 @@
-﻿using CQRS.Application.Features.Products.Rules;
+﻿using CQRS.Application.Bases;
+using CQRS.Application.Features.Products.Rules;
+using CQRS.Application.Interfaces.AutoMapper;
 using CQRS.Application.Interfaces.UnitOfWorks;
 using CQRS.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 
 namespace CQRS.Application.Features.Products.Commands.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, Unit>
+    public class CreateProductCommandHandler : BaseHandler, IRequestHandler<CreateProductCommandRequest, Unit>
     {
-        private readonly IUnitOfWork unitOfWork;
         private readonly ProductRules productRules;
 
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork, ProductRules productRules)
+        public CreateProductCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor, ProductRules productRules) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
             this.productRules = productRules;
         }
 
